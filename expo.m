@@ -3,8 +3,7 @@ pkg load image
 
 #cargar imagenes
 paisaje=imread('land.jpg'); oficina=imread('oficina.jpg');
-#mostrar imagenes
-subplot(1,3,1); imshow(paisaje); subplot(1,3,2); imshow(oficina);
+
 #tamaño imagenes
 [m,n,c]=size(paisaje); [m2,n2,_]=size(oficina);
 #coordenadas de los vertices
@@ -28,5 +27,11 @@ inside=repmat(inside,1,1,3); #repite para cada canal
 #reemplazar indices de la imagen con los del cuadro
 result=oficina; result(inside)=im2(inside);
 
-subplot(1,3,3); imshow(result)
-
+#mostrar imagenes
+fh=figure
+ah1 = axes('Parent',fh,'Units','normalized','Position',[0.0 0.85 0.15 0.15]);
+ah2 = axes('Parent',fh,'Units','normalized','Position',[0.0 0.1 0.5 0.8]);
+ah3 = axes('Parent',fh,'Units','normalized','Position',[0.5 0.1 0.5 0.8]);
+imshow(paisaje,'Parent',ah1);
+imshow(oficina,'Parent',ah2);
+imshow(result,'Parent',ah3)
